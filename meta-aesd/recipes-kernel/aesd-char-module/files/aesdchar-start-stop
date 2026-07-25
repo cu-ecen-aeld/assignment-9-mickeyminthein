@@ -1,0 +1,25 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        echo "Loading aesdchar module"
+        modprobe aesdchar
+        # Create /dev/aesdchar with the dynamic major
+        major=$(awk '$2=="aesdchar" {print $1}' /proc/devices)
+        if [ -n "$major" ]; then
+            rm -f /dev/aesdchar
+            mknod /dev/aesdchar c $major 0
+            chmod 666 /dev/aesdchar
+        fi
+        ;;
+    stop)
+        echo "Unloading aesdchar module"
+        rm -f /dev/aesdchar
+        rmmod aesdchar 2>/dev/null
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+exit 0
