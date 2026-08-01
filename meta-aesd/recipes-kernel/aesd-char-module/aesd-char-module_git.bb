@@ -9,7 +9,7 @@ SRC_URI = "git://github.com/cu-ecen-aeld/assignments-3-and-later-mickeyminthein.
           "
 
 # Same commit you used for aesd-assignments
-SRCREV = "98b58ed38bfea387f6f0f9b2b512028c4a09c812"
+SRCREV = "61143aaf784402a25141fe690a3ef408da45e1b9"
 
 PV = "1.0+git${SRCPV}"
 S = "${WORKDIR}/git/aesd-char-driver"
